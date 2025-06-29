@@ -6,13 +6,13 @@
 
 ---
 
-**University:** [Your University's Name]
+**University:** Nha Trang University
 
-**Class:** [Your Class Name]
+**Class:** NT24B2TA
 
-**Instructor:** [Your Instructor's Name]
+**Instructor:** MA. Vo Nguyen Hong Lam
 
-**Group Number:** [Your Group Number]
+**Group Number:** 7
 
 **Group Members:**
 1.  Tuong Nghi
