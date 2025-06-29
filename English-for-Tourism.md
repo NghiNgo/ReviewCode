@@ -1,17 +1,26 @@
 FIELD TRIP REPORT
+
 Course: English for Tourism
+
 Topic: An Analysis of Tourism Activities at Diamond Bay Resort & Spa, Khanh Hoa Province
+
 University: Nha Trang University
+
 Class: NT24B2TA
+
 Instructor: MA. Võ Nguyễn Hồng Lam
+
 Group Number: 7
+
 Group Members:
  * Tuong Nghi
  * Kim Ngoc
  * Tung Linh
  * Anh Le
  * Hoang Ngan
+
 Submission Date: June 30, 2025
+
 TABLE OF CONTENTS
 1. Preface
 2. Acknowledgements
