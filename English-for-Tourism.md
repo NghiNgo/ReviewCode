@@ -1,26 +1,17 @@
 FIELD TRIP REPORT
-
 Course: English for Tourism
-
 Topic: An Analysis of Tourism Activities at Diamond Bay Resort & Spa, Khanh Hoa Province
-
-University: Nha Trang University
-
-Class: NT24B2TA
-
-Instructor: MA. Võ Nguyễn Hồng Lam
-
-Group Number: 7
-
+University: [Your University's Name]
+Class: [Your Class Name]
+Instructor: [Your Instructor's Name]
+Group Number: [Your Group Number]
 Group Members:
  * Tuong Nghi
  * Kim Ngoc
  * Tung Linh
  * Anh Le
  * Hoang Ngan
-
 Submission Date: June 30, 2025
-
 TABLE OF CONTENTS
 1. Preface
 2. Acknowledgements
@@ -36,6 +27,7 @@ TABLE OF CONTENTS
 5. Conclusion
 * Completed by: Kim Ngoc
 6. References
+
 1. Preface
 (Completed by: Tuong Nghi)
 This report aims to present a comprehensive analysis and evaluation of Diamond Bay Resort & Spa, based on the group's field trip conducted on June 21-22, 2025. The report will delve into the current state of tourism operations, explore potential solutions for attracting investment, and examine the positive and negative impacts that tourism has brought to this destination.
