@@ -150,3 +150,201 @@ Với BRD này, sinh viên có thể dễ dàng suy luận ra hàng chục kịc
  * Test case biên: Điền Tên đăng nhập 5 ký tự, 6 ký tự, 20 ký tự, 21 ký tự.
  * Test case sai định dạng: Điền Số điện thoại "0912abc567" -> Nút đăng ký không được sáng lên.
 Bạn có muốn tôi phác thảo tiếp Một file Excel mẫu chứa sẵn 5 Test Cases chuẩn dựa trên tài liệu BRD này, để bạn gửi cho sinh viên tham khảo cách trình bày không?
+---
+Dạ vâng, tôi xin gửi bạn Bảng Kịch bản Kiểm thử (Test Case) mẫu được thiết kế dựa trên tài liệu BRD ở trên.
+Bạn có thể copy bảng này dán trực tiếp vào Excel hoặc Google Sheets để làm file mẫu (Template) phát cho sinh viên. Tôi đã chọn lọc ra 5 trường hợp điển hình nhất (bao gồm cả đúng và sai) để sinh viên MIS dễ hình dung cách viết.
+BẢNG MẪU KỊCH BẢN KIỂM THỬ (TEST CASE TEMPLATE)
+Module: Đăng ký tài khoản (User Registration)
+Người viết: [Tên sinh viên]
+Ngày viết: 18/03/2026
+| Mã TC | Tên kịch bản (Test Scenario) | Tiền điều kiện (Pre-condition) | Các bước thực hiện (Test Steps) | Kết quả mong đợi (Expected Result) | Kết quả thực tế (Actual Result) | Trạng thái (Status) |
+|---|---|---|---|---|---|---|
+| TC_01 | Đăng ký thành công với tất cả dữ liệu hợp lệ (Happy Path). | Truy cập thành công vào trang Đăng ký. Không có tài khoản nào trùng lặp trong hệ thống. | 1. Nhập Tên đăng nhập: nguyenvana123
+2. Nhập Email: vana@gmail.com
+3. Nhập SĐT: 0912345678
+4. Nhập Mật khẩu: Vana@12345
+5. Nhập Xác nhận MK: Vana@12345
+6. Tick chọn ô "Tôi đồng ý với các Điều khoản..."
+7. Bấm nút "ĐĂNG KÝ". | - Nút ĐĂNG KÝ sáng lên màu xanh.
+- Hiển thị popup: "Đăng ký tài khoản thành công!".
+- Sau 3s chuyển hướng sang trang Đăng nhập. | (Sinh viên tự điền khi test thực tế) | (Pass/Fail) |
+| TC_02 | Kiểm tra biên: Tên đăng nhập có độ dài không hợp lệ (Dưới 6 ký tự). | Truy cập trang Đăng ký. | 1. Nhập Tên đăng nhập: admin
+2. Click chuột sang ô Email. | - Hiển thị cảnh báo chữ đỏ dưới ô Tên đăng nhập: "Tên đăng nhập phải có từ 6-20 ký tự."
+- Nút ĐĂNG KÝ bị vô hiệu hóa (màu xám). |  |  |
+| TC_03 | Kiểm tra định dạng: Email không có ký tự @. | Truy cập trang Đăng ký. | 1. Nhập Tên đăng nhập: nguyenvana
+2. Nhập Email: vanagmail.com
+3. Click chuột sang ô SĐT. | - Hiển thị cảnh báo chữ đỏ dưới ô Email: "Email không đúng định dạng."
+- Nút ĐĂNG KÝ bị vô hiệu hóa. |  |  |
+| TC_04 | Kiểm tra logic: Xác nhận mật khẩu không khớp với Mật khẩu. | Truy cập trang Đăng ký. | 1. Điền thông tin hợp lệ vào Tên đăng nhập, Email, SĐT.
+2. Nhập Mật khẩu: Abcd@1234
+3. Nhập Xác nhận MK: Abcd@9999
+4. Click chuột ra ngoài. | - Hiển thị cảnh báo chữ đỏ dưới ô Xác nhận MK: "Mật khẩu xác nhận không khớp."
+- Nút ĐĂNG KÝ bị vô hiệu hóa. |  |  |
+| TC_05 | Kiểm tra quy tắc nghiệp vụ: Bỏ trống Checkbox Điều khoản. | Truy cập trang Đăng ký. | 1. Điền thông tin hoàn toàn hợp lệ vào tất cả các ô input.
+2. KHÔNG tick chọn ô "Tôi đồng ý...". | - Nút ĐĂNG KÝ vẫn ở trạng thái bị vô hiệu hóa (màu xám).
+- Không cho phép người dùng click vào nút ĐĂNG KÝ. |  |  |
+Hướng dẫn cách sử dụng file mẫu này trên lớp:
+ * Giao việc: Bạn chiếu bảng này lên máy chiếu, giải thích ý nghĩa từng cột. Nhấn mạnh việc viết Các bước thực hiện (Test Steps) phải thật chi tiết, có dữ liệu cụ thể (nhập chữ gì, số mấy) để bất kỳ ai cầm file này lên cũng test lại được.
+ * Thực hành điền kết quả: * Cột Kết quả thực tế và Trạng thái hiện đang để trống.
+   * Bạn hãy đưa cho sinh viên một đường link website (hoặc một hình ảnh giao diện cố tình làm sai, ví dụ: hình ảnh cho thấy không tick ô Điều khoản nhưng nút ĐĂNG KÝ vẫn sáng).
+   * Yêu cầu sinh viên đối chiếu hình ảnh đó với TC_05, ghi kết quả thực tế vào và đánh trạng thái là FAIL.
+ * Bài tập về nhà / Thực hành tiếp: Yêu cầu mỗi nhóm sinh viên tự viết tiếp 5 - 10 Test Cases nữa dựa trên tài liệu BRD (ví dụ: test SĐT nhập chữ cái, test mật khẩu không có chữ hoa, test trùng tên đăng nhập...).
+Bước tiếp theo rất quan trọng khi có Test Case bị FAIL là báo cáo lỗi (Log Bug) cho đội ngũ Lập trình viên sửa.
+Bạn có muốn tôi hướng dẫn tiếp cách thiết lập bảng Trello quản lý lỗi và cấu trúc chuẩn của một Thẻ báo cáo lỗi (Bug Report Card) để bạn hướng dẫn sinh viên không?
+---
+Bạn hoàn toàn có lý! Viết kịch bản kiểm thử (Test Case) mà không có hệ thống thực tế để "chạy thử" (Execute) thì bài học sẽ dừng lại ở mức lý thuyết suông, sinh viên sẽ không cảm nhận được cảm giác "bắt được lỗi" (catch a bug) thú vị như thế nào.
+Để giải quyết triệt để vấn đề này mà không bắt bạn phải tốn tiền thuê server hay cài đặt database phức tạp, tôi đã chuẩn bị sẵn cho bạn một "Hệ thống Mockup Offline".
+Đó là một đoạn mã HTML/Javascript đơn giản chứa giao diện form "Đăng ký EcoMart" khớp 100% với tài liệu BRD ở trên. Đặc biệt, tôi đã cố tình cài cắm sẵn 4 lỗi (bugs) ngầm bên trong để sinh viên tìm ra.
+Cách sử dụng Hệ thống Mockup này:
+ * Bạn chỉ cần copy toàn bộ đoạn code bên dưới.
+ * Mở ứng dụng Notepad (trên Windows) hoặc TextEdit (trên Mac).
+ * Dán code vào, chọn File > Save As, lưu lại với tên là EcoMart_MockSystem.html (Nhớ chọn Save as type: All Files).
+ * Bạn gửi file .html này cho sinh viên. Các em chỉ cần click đúp chuột vào file là nó sẽ mở ra một trang web hoàn chỉnh ngay trên trình duyệt Chrome/Edge mà không cần kết nối internet.
+Mã nguồn Hệ thống Mockup (Cố tình chứa lỗi)
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMart - Đăng ký tài khoản</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .register-container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 350px; }
+        .register-container h2 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        .form-group input[type="text"], .form-group input[type="password"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .error-msg { color: red; font-size: 12px; display: none; margin-top: 5px; }
+        .btn-submit { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        .btn-submit:hover { background-color: #218838; }
+        .checkbox-group { font-size: 13px; display: flex; align-items: center; margin-bottom: 15px; }
+        .checkbox-group input { margin-right: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Đăng Ký EcoMart</h2>
+    <div class="form-group">
+        <label for="username">Tên đăng nhập *</label>
+        <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+        </div>
+    
+    <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="text" id="email" placeholder="VD: nguyenvana@gmail.com">
+        <div id="email-error" class="error-msg">Email không đúng định dạng.</div>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Số điện thoại</label>
+        <input type="text" id="phone" placeholder="Nhập 10 chữ số">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mật khẩu *</label>
+        <input type="password" id="password" placeholder="Tối thiểu 8 ký tự">
+    </div>
+
+    <div class="form-group">
+        <label for="confirm_password">Xác nhận mật khẩu *</label>
+        <input type="password" id="confirm_password" placeholder="Nhập lại mật khẩu">
+        <div id="pwd-error" class="error-msg">Mật khẩu xác nhận không khớp.</div>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="terms">
+        <label for="terms">Tôi đồng ý với các Điều khoản và Dịch vụ của EcoMart</label>
+    </div>
+
+    <button class="btn-submit" onclick="validateForm()">ĐĂNG KÝ</button>
+</div>
+
+<script>
+    function validateForm() {
+        let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let pwd = document.getElementById("password").value;
+        let confirmPwd = document.getElementById("confirm_password").value;
+        
+        let hasError = false;
+
+        // Validation Email đơn giản
+        if(email !== "" && !email.includes("@")) {
+            document.getElementById("email-error").style.display = "block";
+            hasError = true;
+        } else {
+            document.getElementById("email-error").style.display = "none";
+        }
+
+        // LỖI LOGIC: Cố tình kiểm tra sai mật khẩu xác nhận
+        // Đáng lẽ phải là: pwd !== confirmPwd
+        if(confirmPwd !== "" && pwd === confirmPwd + "123") { 
+            document.getElementById("pwd-error").style.display = "block";
+            hasError = true;
+        } else {
+            document.getElementById("pwd-error").style.display = "none";
+        }
+
+        if(!hasError && username !== "" && email !== "" && pwd !== "") {
+            alert("Đăng ký tài khoản thành công! (Mock System)");
+        } else if (hasError) {
+            alert("Vui lòng kiểm tra lại thông tin báo đỏ!");
+        } else {
+            alert("Vui lòng điền đầy đủ các trường bắt buộc có dấu *");
+        }
+    }
+</script>
+
+</body>
+</html>
+
+Bí mật dành riêng cho Giảng viên (Danh sách các lỗi cố ý)
+Khi sinh viên chạy file HTML này và đối chiếu với file BRD bạn đã phát, nếu các em làm đúng và đủ Test Case, các em bắt buộc phải tìm ra 4 lỗi (Bug) sau đây để báo cáo lên Trello:
+ * Bug 1 (Severity: High): Nhập Tên đăng nhập 3 ký tự (VD: abc) hệ thống vẫn cho phép đăng ký thành công, không hề hiện dòng cảnh báo đỏ yêu cầu 6-20 ký tự như BRD.
+ * Bug 2 (Severity: Medium): Ô Số điện thoại cho phép nhập chữ cái (VD: abcdefghij) mà hệ thống không báo lỗi.
+ * Bug 3 (Severity: Critical): Nhập Mật khẩu là Abc@123 nhưng ô Xác nhận mật khẩu nhập sai bét là Xyz@999, hệ thống không báo lỗi không khớp, vẫn cho đăng ký thành công.
+ * Bug 4 (Severity: High): Nút "ĐĂNG KÝ" luôn có màu xanh và bấm được ngay từ đầu. Đồng thời, KHÔNG tick vào ô "Tôi đồng ý với điều khoản...", hệ thống vẫn cho đăng ký thành công (vi phạm nghiêm trọng BRD mục 3.6 và 3.7).
+Với file HTML "mồi" này, lớp học của bạn sẽ cực kỳ sôi nổi vì sinh viên có cảm giác như đang điều tra phá án thật sự.
+Bạn có muốn tôi hướng dẫn cấu trúc chuẩn của một Thẻ báo cáo lỗi (Bug Report) trên Trello để sinh viên biết cách log lại 4 lỗi này một cách chuyên nghiệp không?
+---
+Chào bạn, đây chính là lúc sinh viên MIS (những Business Analyst hay QA tương lai) thể hiện rõ nhất vai trò "cầu nối" của mình. Một lập trình viên (Dev) thường rất sợ những báo cáo lỗi chung chung như "Anh ơi form đăng ký bị lỗi rồi". Họ cần biết chính xác lỗi đó là gì, làm sao để nó xuất hiện lại, và đáng lẽ ra nó phải hoạt động như thế nào.
+Dưới đây là Cấu trúc chuẩn của một Thẻ báo cáo lỗi (Bug Report Card) trên Trello, kèm theo một ví dụ mẫu (bắt đúng Lỗi số 4 trong file HTML vừa rồi) để bạn hướng dẫn sinh viên.
+1. Cấu trúc chuẩn của một Bug Report trên Trello
+Khi tạo một Thẻ (Card) bên cột Bugs trên Trello, sinh viên cần tuân thủ cấu trúc sau trong phần Mô tả (Description):
+ * Tiêu đề Thẻ (Card Title): Cú pháp: [Tên chức năng] - Mô tả tóm tắt lỗi
+ * Nhãn màu (Labels - Mức độ nghiêm trọng): Sử dụng tính năng Label của Trello để đánh giá.
+   * 🔴 Critical/Blocker (Nghiêm trọng/Tắc nghẽn): Lỗi chết hệ thống, sai lệch dữ liệu nặng, không thể đi tiếp.
+   * 🟠 High (Cao): Sai quy tắc nghiệp vụ (Business Rule) quan trọng, sai luồng chức năng.
+   * 🟡 Medium (Trung bình): Lỗi giao diện, sai định dạng nhưng không cản trở luồng chính.
+   * 🔵 Low (Thấp): Sai lỗi chính tả, màu sắc, font chữ.
+ * Môi trường test (Environment): Trình duyệt gì (Chrome, Edge), hệ điều hành gì (Windows, macOS).
+ * Các bước tái hiện (Steps to Reproduce): Đánh số thứ tự từng bước một cách rành mạch để Dev làm theo.
+ * Kết quả thực tế (Actual Result): Hệ thống đang bị sai như thế nào?
+ * Kết quả mong đợi (Expected Result): Dẫn chứng từ tài liệu Yêu cầu (BRD) xem đáng lẽ hệ thống phải hoạt động ra sao.
+ * Bằng chứng đính kèm (Attachments): Bắt buộc phải có ảnh chụp màn hình (Screenshot) khoanh đỏ chỗ bị lỗi.
+2. Ví dụ Mẫu: Log Lỗi số 4 (Lỗi Checkbox Điều khoản)
+Giảng viên có thể mở Trello lên, tạo một Card mẫu y hệt như dưới đây để sinh viên copy format:
+> Tiêu đề thẻ: [Đăng ký] Nút ĐĂNG KÝ luôn hoạt động và cho phép tạo tài khoản khi bỏ trống Checkbox Điều khoản
+> Nhãn (Labels): 🔴 High (Màu đỏ)
+> 📝 MÔ TẢ CHI TIẾT:
+> Môi trường: Google Chrome (Phiên bản mới nhất), Windows 11
+> Các bước tái hiện (Steps to Reproduce):
+>  * Mở trang Đăng ký tài khoản EcoMart.
+>  * Nhập dữ liệu hợp lệ vào các ô: Tên đăng nhập, Email, Mật khẩu, Xác nhận mật khẩu.
+>  * Tuyệt đối KHÔNG tick chọn ô "Tôi đồng ý với các Điều khoản và Dịch vụ của EcoMart".
+>  * Quan sát trạng thái của nút "ĐĂNG KÝ".
+>  * Click chuột vào nút "ĐĂNG KÝ".
+> Kết quả thực tế (Actual Result):
+>  * Nút ĐĂNG KÝ luôn có màu xanh và cho phép click vào ngay từ đầu.
+>  * Khi click vào, hệ thống vẫn hiển thị popup: "Đăng ký tài khoản thành công!" dù chưa đồng ý điều khoản.
+> Kết quả mong đợi (Expected Result) - Theo BRD mục 3.6 và 3.7:
+>  * Nút ĐĂNG KÝ mặc định phải bị vô hiệu hóa (Màu xám, không click được).
+>  * Nút ĐĂNG KÝ chỉ được sáng lên và hoạt động khi người dùng ĐÃ tick chọn Checkbox điều khoản và điền đủ các trường bắt buộc.
+> Đính kèm: > (Sinh viên dán ảnh chụp màn hình hiển thị rõ việc chưa tick checkbox nhưng popup báo thành công vẫn hiện lên).
+> 
+Mẹo sư phạm khi chấm điểm Trello:
+ * Quy tắc "Không có ảnh - Không tính điểm": Hãy quán triệt với sinh viên ngay từ đầu. Làm QA/Tester mà nói miệng không có bằng chứng thì Dev sẽ không bao giờ chịu sửa. Ảnh chụp màn hình là bắt buộc.
+ * Bắt lỗi chéo (Cross-review): Để lớp học sôi động hơn, sau khi các nhóm tìm lỗi xong, bạn có thể yêu cầu Nhóm A mở bảng Trello của Nhóm B, đọc các "Bước tái hiện" xem có hiểu và làm theo được không. Nếu Nhóm A đọc mà không biết cách làm cho lỗi đó xuất hiện lại, thì Bug Report của Nhóm B bị trừ điểm.
+Như vậy là chúng ta đã chuẩn bị xong trọn vẹn giáo án, công cụ và tài liệu cho Bài Lab số 1. Sự kết hợp giữa lý thuyết BRD, viết Test Case trên Excel, "bắt lỗi" trên hệ thống Mockup và log lỗi lên Trello sẽ mang lại một trải nghiệm cực kỳ sát với thực tế doanh nghiệp cho các em sinh viên.
+Bạn có muốn chúng ta tiếp tục sang Bài 2: Khái niệm Unit Test cơ bản (Logic nghiệp vụ), với các đoạn code Python cực kỳ đơn giản (dành riêng cho người không giỏi code) để sinh viên thực hành tư duy logic không?
