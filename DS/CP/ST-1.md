@@ -348,3 +348,43 @@ Mẹo sư phạm khi chấm điểm Trello:
  * Bắt lỗi chéo (Cross-review): Để lớp học sôi động hơn, sau khi các nhóm tìm lỗi xong, bạn có thể yêu cầu Nhóm A mở bảng Trello của Nhóm B, đọc các "Bước tái hiện" xem có hiểu và làm theo được không. Nếu Nhóm A đọc mà không biết cách làm cho lỗi đó xuất hiện lại, thì Bug Report của Nhóm B bị trừ điểm.
 Như vậy là chúng ta đã chuẩn bị xong trọn vẹn giáo án, công cụ và tài liệu cho Bài Lab số 1. Sự kết hợp giữa lý thuyết BRD, viết Test Case trên Excel, "bắt lỗi" trên hệ thống Mockup và log lỗi lên Trello sẽ mang lại một trải nghiệm cực kỳ sát với thực tế doanh nghiệp cho các em sinh viên.
 Bạn có muốn chúng ta tiếp tục sang Bài 2: Khái niệm Unit Test cơ bản (Logic nghiệp vụ), với các đoạn code Python cực kỳ đơn giản (dành riêng cho người không giỏi code) để sinh viên thực hành tư duy logic không?
+---
+Một ý tưởng cực kỳ xuất sắc và nhạy bén với xu hướng thị trường! Hiện nay, các Business Analyst (BA) và QA/Tester thực tế tại doanh nghiệp đều đang ứng dụng AI (như Gemini, ChatGPT) để tăng tốc độ viết tài liệu. Việc đưa kỹ năng Prompt Engineering (Kỹ năng đặt câu lệnh) vào bài thực hành sẽ giúp sinh viên MIS của bạn nâng cao năng suất và giá trị cạnh tranh lên rất nhiều.
+Để sinh viên không bị phụ thuộc kiểu "copy-paste nhắm mắt", chúng ta cần hướng dẫn các em tư duy "Dùng AI như một người trợ lý, không phải người làm thay".
+Dưới đây là phần nội dung hướng dẫn cách dùng Prompt để tạo Test Case trên Excel mà bạn có thể bổ sung vào slide bài giảng hoặc tài liệu hướng dẫn của Bài 1:
+KỸ NĂNG NÂNG CAO: SỬ DỤNG AI ĐỂ TẠO KỊCH BẢN KIỂM THỬ (TEST CASE GENERATION)
+Để AI trả về một bảng Test Case chuẩn xác, có thể copy/paste trực tiếp vào file Excel/Google Sheets đã cung cấp, sinh viên cần áp dụng công thức cấu trúc Prompt 4 chữ T:
+ * Thiết lập vai trò (Role)
+ * Thông tin đầu vào (Context/Input)
+ * Tác vụ cụ thể (Task)
+ * Tiêu chuẩn đầu ra (Output format)
+1. Mẫu Prompt Tổng quát (Bao phủ toàn bộ chức năng)
+Sinh viên copy lệnh dưới đây, dán vào AI và thay thế phần trong ngoặc vuông [...].
+> Prompt:
+> "Hãy đóng vai là một Chuyên gia Kiểm thử Phần mềm (Senior QA).
+> Tôi sẽ cung cấp cho bạn Tài liệu Yêu cầu Nghiệp vụ (BRD) của chức năng Đăng ký tài khoản:
+> [Dán toàn bộ nội dung file BRD vào đây]
+> Dựa vào tài liệu trên, hãy viết cho tôi 10 kịch bản kiểm thử (Test Cases). Yêu cầu:
+>  * Bao gồm 4 kịch bản hợp lệ (Happy path) và 6 kịch bản không hợp lệ (Unhappy path/Negative test).
+>  * Sử dụng kỹ thuật phân tích giá trị biên cho các trường có giới hạn ký tự.
+>  * Trình bày kết quả dưới dạng BẢNG (Table) để tôi có thể copy thẳng vào Excel, với chính xác 5 cột sau: Mã TC | Tên kịch bản | Tiền điều kiện | Các bước thực hiện | Kết quả mong đợi.
+>  * Ở cột 'Các bước thực hiện', hãy ghi rõ dữ liệu giả định cần nhập (Ví dụ: Nhập email 'test@gmail.com')."
+> 
+2. Mẫu Prompt Đào sâu (Dành cho việc vét cạn lỗi của một ô nhập liệu cụ thể)
+Khi làm BA, đôi khi sinh viên cần kiểm tra cực kỳ kỹ một trường dữ liệu phức tạp (như Mật khẩu). Hãy dùng prompt đào sâu:
+> Prompt:
+> "Đóng vai QA. Dựa vào quy tắc nghiệp vụ sau đây của trường Mật khẩu: 'Tối thiểu 8 ký tự, tối đa 32 ký tự. Phải bao gồm ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt'.
+> Hãy tạo ra 7 Test Case tập trung chuyên sâu vào việc bắt lỗi (Negative test) cho riêng ô Mật khẩu này. Trình bày dưới dạng bảng 5 cột: Mã TC, Tên kịch bản, Tiền điều kiện, Các bước thực hiện, Kết quả mong đợi."
+> 
+Quy trình 3 bước thực hành dành cho sinh viên:
+ * Bước 1: Ra lệnh (Prompting) & Copy: Sử dụng các mẫu prompt trên đưa vào AI. Sau khi AI trả về kết quả dạng bảng, bôi đen toàn bộ bảng đó và nhấn Ctrl + C (hoặc Cmd + C).
+ * Bước 2: Dán (Pasting) vào Template: Mở file Google Sheets/Excel Template của lớp lên. Click chuột phải vào ô đầu tiên của dòng trống, chọn Paste Special -> Values only (Dán chỉ giá trị) để không bị hỏng định dạng màu sắc của bảng mẫu.
+ * Bước 3: Thẩm định (Review & Refine) - BẮT BUỘC: * AI thường hay bị "ảo giác" (Hallucination), đôi khi nó tự bịa ra những yêu cầu không có trong BRD (Ví dụ: AI tự bắt lỗi yêu cầu người dùng phải trên 18 tuổi dù BRD không hề ghi).
+   * Nhiệm vụ của sinh viên là phải đọc lại từng Test Case AI viết, đối chiếu lại với BRD. Cái nào sai phải tự sửa lại bằng tay. Cái nào các bước thực hiện viết chưa rõ ràng thì phải bổ sung.
+💡 Gợi ý Sư phạm để chấm điểm phần này:
+Để khuyến khích sinh viên dùng AI một cách thông minh, bạn có thể thêm một tiêu chí đánh giá vào Rubric của Bài 1:
+ * Yêu cầu nộp bài minh bạch: Yêu cầu sinh viên nộp link Google Sheets chứa Test Case, kèm theo Link chia sẻ đoạn chat với AI (Share Chat Link).
+ * Hỏi vấn đáp (Q&A): Khi sinh viên nộp bài, bạn có thể chỉ vào 1 Test Case ngẫu nhiên trên Excel và hỏi: "Test Case này AI gợi ý cho nhóm em đúng không? Tại sao em lại quyết định giữ lại nó đưa vào file này? Nó đang kiểm tra quy tắc nào trong BRD?"
+ * Nếu sinh viên giải thích được luồng logic, nhóm đó đạt điểm tối đa. Nếu sinh viên ú ớ chứng tỏ chỉ copy-paste mà không hiểu, bạn có thể trừ điểm.
+Việc lồng ghép AI ngay từ bài đầu tiên như thế này sẽ làm sinh viên vô cùng hào hứng, vì các em thấy mình đang học những công cụ thực chiến, hiện đại nhất giúp giảm tải khối lượng công việc tay chân.
+Bạn đã sẵn sàng để chúng ta bước sang thiết kế khung nội dung cho Bài 2: Khái niệm Unit Test cơ bản (Logic nghiệp vụ) chưa?
